@@ -6,8 +6,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ameya.home_accountant.dto.AuthResponse;
-import com.ameya.home_accountant.dto.GoogleLoginRequest;
+import com.ameya.home_accountant.dto.request.GoogleLoginRequest;
+import com.ameya.home_accountant.dto.response.ApiResponse;
+import com.ameya.home_accountant.dto.response.AuthResponse;
 import com.ameya.home_accountant.service.AuthService;
 
 import jakarta.validation.Valid;
@@ -26,9 +27,13 @@ public class AuthController {
     }
 
     @PostMapping("/google")
-    public AuthResponse login(@Valid @RequestBody GoogleLoginRequest googleLoginRequest) {
+    public ApiResponse<AuthResponse> login(@Valid @RequestBody GoogleLoginRequest googleLoginRequest) {
 
-        return authService.googleLogin(googleLoginRequest);
+        return ApiResponse.<AuthResponse>builder()
+            .success(true)
+            .message("Login successful")
+            .data(authService.googleLogin(googleLoginRequest))
+            .build();
     }
     
 }

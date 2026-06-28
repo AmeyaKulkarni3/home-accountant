@@ -1,4 +1,4 @@
-package com.ameya.home_accountant.dto;
+package com.ameya.home_accountant.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

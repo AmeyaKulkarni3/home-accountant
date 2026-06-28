@@ -1,7 +1,13 @@
 package com.ameya.home_accountant.entities;
 
+import java.time.LocalDateTime;
+
+import com.ameya.home_accountant.util.Role;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -33,4 +39,11 @@ public class User extends AuditableEntity {
     private String name;
 
     private String profilePicture;
+
+    @Enumerated(EnumType.STRING)
+    private Role role = Role.MEMBER;
+
+    private Boolean enabled = true;
+
+    private LocalDateTime lastLoginAt;
 }

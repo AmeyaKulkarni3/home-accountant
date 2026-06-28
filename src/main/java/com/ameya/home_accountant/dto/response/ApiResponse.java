@@ -1,6 +1,5 @@
-package com.ameya.home_accountant.dto;
+package com.ameya.home_accountant.dto.response;
 
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,8 +9,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class GoogleLoginRequest {
+public class ApiResponse<T> {
 
-    @NotBlank
-    private String idToken;
+    private boolean success;
+
+    private String message;
+
+    private T data;
+    
 }
